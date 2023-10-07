@@ -1,14 +1,14 @@
 // Khadija
 
-function computerPlay() {
+function ComputerPlay() {
     const choices = ["Rock", "Paper", "Scissors"];
     const randomIndex = Math.floor(Math.random() * choices.length);
     return choices[randomIndex];
 }  
 
 
-// function playRound
-function playRound(playerSelection, computerSelection) {
+// function PlayRound
+function PlayRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === computerSelection.toLowerCase()) {
         return "It's a tie!";
@@ -20,5 +20,32 @@ function playRound(playerSelection, computerSelection) {
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     } else {
         return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    }
+}
+
+// function Game()
+function Game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt("Enter your choice (Rock, Paper, or Scissors):");
+        const computerSelection = ComputerPlay();
+        const result = PlayRound(playerSelection, computerSelection);
+        console.log(result);
+
+        if (result.includes("You Win")) {
+            playerScore++;
+        } else if (result.includes("You Lose")) {
+            computerScore++;
+        }
+    }
+
+    if (playerScore > computerScore) {
+        console.log("Congratulations! You win the game!");
+    } else if (playerScore < computerScore) {
+        console.log("Sorry, you lose the game!");
+    } else {
+        console.log("It's a tie game!");
     }
 }
